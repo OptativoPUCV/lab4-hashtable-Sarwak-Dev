@@ -2,3 +2,14 @@ Thu 25 Apr 2024 03:16:17 PM UTC:
  tests:  0|6
 total_score: 0/70
 1dede22
+Thu 25 Apr 2024 03:27:03 PM UTC: 
+ hashmap.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:58:8: error: ‘*map.buckets’ may be used uninitialized [-Werror=maybe-uninitialized]
+   58 |     map->buckets[i] = NULL;
+      |     ~~~^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+8714bfc
