@@ -53,11 +53,10 @@ void enlarge(HashMap * map) {
     map->size = 0;
 
   for (long i = 0; i < o_capacity; i++) {
-    Pair* current_buckets = o_buckets[i];
     
-    while (current_buckets != NULL) {
-      Pair* next_buckets = current_buckets->next;
-      insertMap(map, current_buckets->key, current_buckets->value);
+    while (o_buckets[i] != NULL) {
+      Pair* next_buckets = o_buckets[i++];
+      insertMap(map, o_buckets[i]->key, o_buckets[i]->value);
       current_buckets = next_buckets;
     }
   }

@@ -29,3 +29,15 @@ hashmap.c:59:43: error: ‘Pair’ has no member named ‘next’
       |                                           ^~
 Compilation failed
 1170fa8
+Thu 25 Apr 2024 04:07:21 PM UTC: 
+ hashmap.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:60:7: error: ‘current_buckets’ undeclared (first use in this function); did you mean ‘next_buckets’?
+   60 |       current_buckets = next_buckets;
+      |       ^~~~~~~~~~~~~~~
+      |       next_buckets
+hashmap.c:60:7: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+8a2baa8
