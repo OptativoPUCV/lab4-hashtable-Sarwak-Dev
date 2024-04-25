@@ -39,9 +39,27 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
-  
+void insert(HashMap * map, char * key, void * value) {
+    // Calcular el índice del cubo usando la función de hash
+    unsigned long index = hash_function(key) % map->capacity;
 
+    // Crear un nuevo par clave-valor
+    Pair * new_pair = create_pair(key, value);
+
+    // Insertar el nuevo par clave-valor en el cubo correspondiente
+    if (map->buckets[index] == NULL) {
+        map->buckets[index] = new_pair;
+    } else {
+        // Si hay colisión, agregar al final de la lista enlazada
+        Pair * current = map->buckets[index];
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = new_pair;
+    }
+
+    // Incrementar el tamaño del hashmap
+    map->size++;
 }
 
 void enlarge(HashMap * map) {

@@ -46,3 +46,28 @@ Thu 25 Apr 2024 04:08:17 PM UTC:
  1 file changed, 1 insertion(+), 3 deletions(-)
  tests:  0|0
 5671cd5
+Thu 25 Apr 2024 04:11:35 PM UTC: 
+ hashmap.c | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insert’:
+hashmap.c:44:27: error: implicit declaration of function ‘hash_function’ [-Werror=implicit-function-declaration]
+   44 |     unsigned long index = hash_function(key) % map->capacity;
+      |                           ^~~~~~~~~~~~~
+hashmap.c:47:23: error: implicit declaration of function ‘create_pair’; did you mean ‘createPair’? [-Werror=implicit-function-declaration]
+   47 |     Pair * new_pair = create_pair(key, value);
+      |                       ^~~~~~~~~~~
+      |                       createPair
+hashmap.c:47:23: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+hashmap.c:55:23: error: ‘Pair’ has no member named ‘next’
+   55 |         while (current->next != NULL) {
+      |                       ^~
+hashmap.c:56:30: error: ‘Pair’ has no member named ‘next’
+   56 |             current = current->next;
+      |                              ^~
+hashmap.c:58:16: error: ‘Pair’ has no member named ‘next’
+   58 |         current->next = new_pair;
+      |                ^~
+cc1: all warnings being treated as errors
+Compilation failed
+2ddf77d
