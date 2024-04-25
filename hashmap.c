@@ -40,13 +40,34 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-
+  
 
 }
 
 void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+    Pair** o_buckets = map->buckets;
+    long o_capacity = map->capacity;
 
+    map->capacity = map->capacity*2;
+    map->buckets = (Pair**)calloc(map->capacity,sizeof(Pair*));
+    map->size = 0;
+
+  for (long i = 0; i < o_capacity; i++) {
+    Pair* current_buckets = o_buckets[i];
+    
+    while (current_buckets != NULL) {
+      Pair* next_buckets = current_buckets->next;
+      insertMap(map, current_buckets->key, current_buckets->value);
+      current_buckets = next_buckets;
+    }
+  }
+
+  
+
+  
+    enlarge_called = 1; //no borrar (testing purposes)
+    
+    
 
 }
 

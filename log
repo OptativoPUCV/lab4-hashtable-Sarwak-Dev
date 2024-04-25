@@ -19,3 +19,13 @@ Thu 25 Apr 2024 03:30:23 PM UTC:
  tests:  1|5
 total_score: 10/70
 5e5f30f
+Thu 25 Apr 2024 04:06:04 PM UTC: 
+ hashmap.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:59:43: error: ‘Pair’ has no member named ‘next’
+   59 |       Pair* next_buckets = current_buckets->next;
+      |                                           ^~
+Compilation failed
+1170fa8
