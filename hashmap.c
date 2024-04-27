@@ -56,7 +56,7 @@ void enlarge(HashMap * map) {
         Pair* current = o_buckets[i];
         while (current != NULL) {
             insertMap(map, current->key, current->value);
-            current = current->next;
+            current = o_buckets[i++];
         }
     }
 
