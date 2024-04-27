@@ -48,20 +48,24 @@ void enlarge(HashMap * map) {
     Pair** o_buckets = map->buckets;
     long o_capacity = map->capacity;
 
-    map->capacity = map->capacity * 2;
-    map->buckets = (Pair**)calloc(map->capacity, sizeof(Pair*));
+    map->capacity = map->capacity*2;
+    map->buckets = (Pair**)calloc(map->capacity,sizeof(Pair*));
     map->size = 0;
 
-    for (long i = 0; i < o_capacity; i++) {
-        Pair* current = o_buckets[i];
-        while (current != NULL) {
-            insertMap(map, current->key, current->value);
-            current = o_buckets[i++];
-        }
+  for (long i = 0; i < o_capacity; i++) {
+    
+    while (o_buckets[i] == NULL) {
+      insertMap(map, o_buckets[i]->key, o_buckets[i]->value);
     }
+  }
 
-    // Aquí está bien si mantienes esto, pero no es necesario para la lógica de la función.
+  
+
+    free(o_buckets);
     enlarge_called = 1; //no borrar (testing purposes)
+    
+    
+
 }
 
 
